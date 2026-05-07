@@ -5,6 +5,8 @@ httpx
 google-genai
 huggingface_hub
 timm
+torch
+torchvision
 numpy
 pillow
 python-multipart
