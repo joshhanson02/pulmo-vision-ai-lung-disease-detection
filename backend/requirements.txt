@@ -3,9 +3,9 @@ uvicorn[standard]
 python-dotenv
 httpx
 google-genai
-torch
 huggingface_hub
 timm
 numpy
 pillow
 python-multipart
+opencv-python-headless
