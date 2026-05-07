@@ -10,7 +10,7 @@ from huggingface_hub import hf_hub_download
 
 # Import hàm inference từ file của bạn
 try:
-    from model.model_inference import analyze_xray
+    from model_inference import analyze_xray
 except ImportError:
     def analyze_xray(bytes): return {
         "result": "Model inference module not found"}
