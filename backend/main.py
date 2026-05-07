@@ -93,7 +93,7 @@ async def chat_with_ai(req: ChatRequest):
 
     try:
         response = client.models.generate_content(
-            model="gemini-3.1-flash-lite-preview",
+            model="gemini-3-flash-preview",
             contents=req.message,
             config=types.GenerateContentConfig(
                 thinking_config=types.ThinkingConfig(thinking_level="low"),
