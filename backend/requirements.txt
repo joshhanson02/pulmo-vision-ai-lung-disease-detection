@@ -10,4 +10,4 @@ torchvision
 numpy
 pillow
 python-multipart
-opencv-python-headless
+scipy
