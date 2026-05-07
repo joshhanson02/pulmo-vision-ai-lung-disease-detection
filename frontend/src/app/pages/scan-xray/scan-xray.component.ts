@@ -74,7 +74,9 @@ export class ScanXrayComponent {
         }
         // Kết quả hợp lệ
         this.scanResult = {
-          heatmapUrl: 'data:image/png;base64,' + res.heatmap,
+          heatmapUrl: res.heatmap
+            ? 'data:image/png;base64,' + res.heatmap
+            : '',
           label: res.label,
           probability: Math.round(res.probability * 10) / 10,
         };

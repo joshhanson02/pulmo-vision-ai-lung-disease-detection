@@ -67,16 +67,21 @@
             />
             <div class="img-caption">Original X-ray</div>
           </div>
-          <div class="result-img-frame">
+          <div class="result-img-frame" *ngIf="scanResult.heatmapUrl">
             <img
-              [src]="scanResult.heatmapUrl!"
+              [src]="scanResult.heatmapUrl"
               alt="Grad-CAM Heatmap"
               class="result-img"
-              (click)="openZoom(scanResult.heatmapUrl!)"
+              (click)="openZoom(scanResult.heatmapUrl)"
               title="Click to zoom"
             />
             <div class="img-caption">AI Heatmap</div>
           </div>
+          <ng-template #noHeatmap>
+            <div class="result-img-frame no-heatmap">
+              <div>No AI Heatmap Available</div>
+            </div>
+          </ng-template>
         </div>
         <div class="result-label">
           Result: <b>{{ scanResult.label }}</b> ({{ scanResult.probability }}%)
