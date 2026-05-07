@@ -1,0 +1,112 @@
+<div class="scan-xray-page">
+  <div class="scan-xray__container">
+    <!-- Box Upload -->
+    <div class="scan-xray__upload">
+      <label
+        class="upload-box"
+        [class.uploaded]="!!imageUrl"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)"
+      >
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          [disabled]="loading"
+        />
+        <ng-container *ngIf="!imageUrl">
+          <span class="upload-icon">🩻</span>
+          <div class="upload-text">Upload your X-ray image to analyze</div>
+          <div class="upload-subtext">JPG, PNG – Max 5MB</div>
+        </ng-container>
+        <ng-container *ngIf="imageUrl">
+          <div class="upload-img-frame">
+            <img [src]="imageUrl" alt="X-ray preview" class="xray-preview" />
+          </div>
+        </ng-container>
+      </label>
+      <button
+        class="scan-btn"
+        [disabled]="!imageUrl || loading"
+        (click)="startScan()"
+      >
+        <span *ngIf="!loading">Start Scan</span>
+        <span *ngIf="loading" class="loading-spinner"></span>
+      </button>
+    </div>
+
+    <!-- Box Kết quả -->
+    <div class="scan-xray__result">
+      <ng-container *ngIf="!scanResult && !loading">
+        <div class="result-placeholder">
+          <span class="result-icon">🩻</span>
+          <div class="result-text">No result yet</div>
+          <div class="result-subtext">
+            Upload and scan your lung X-ray to see results here.
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="loading">
+        <div class="result-loading">
+          <span class="loading-spinner"></span>
+          <div>Analyzing…</div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="scanResult && !loading">
+        <div class="result-imgs-flex">
+          <div class="result-img-frame">
+            <img
+              [src]="imageUrl"
+              alt="Original X-ray"
+              class="result-img"
+              (click)="openZoom(imageUrl!)"
+              title="Click to zoom"
+            />
+            <div class="img-caption">Original X-ray</div>
+          </div>
+          <div class="result-img-frame">
+            <img
+              [src]="scanResult.heatmapUrl!"
+              alt="Grad-CAM Heatmap"
+              class="result-img"
+              (click)="openZoom(scanResult.heatmapUrl!)"
+              title="Click to zoom"
+            />
+            <div class="img-caption">AI Heatmap</div>
+          </div>
+        </div>
+        <div class="result-label">
+          Result: <b>{{ scanResult.label }}</b> ({{ scanResult.probability }}%)
+        </div>
+        <div class="result-advice">
+          Have questions about your result? <br />
+          <b>Ask our AI for explanation or advice!</b>
+        </div>
+        <button class="ai-chat-btn" (click)="openAiChatWithResult()">
+          Chat with AI
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay Zoom Image (popup zoom) -->
+<div
+  class="overlay-zoom"
+  *ngIf="zoomImageUrl"
+  (click)="closeZoom()"
+  tabindex="0"
+>
+  <img
+    [src]="zoomImageUrl"
+    class="overlay-zoom-img"
+    [style.transform]="zoomTransform"
+    (wheel)="onZoomScroll($event)"
+    (click)="$event.stopPropagation()"
+    alt="Zoomed X-ray"
+    tabindex="0"
+  />
+</div>

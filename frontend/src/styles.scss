@@ -1,0 +1,112 @@
+html, body {
+  width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: var(--bg-main, #fff);
+  color: var(--text-main, #23272a);
+  font-family: 'Inter', 'Montserrat', Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ==================== MÀU SẮC THEME ==================== */
+:root {
+  /* Navbar */
+  --navbar-bg: #fff;
+  --navbar-border: #eaeaea;
+  --navbar-link: #23272a;
+  --navbar-link-active: #2186EB;
+  --navbar-hover-bg: #e7f1ff;
+  --toggle-bg: #f3f3f3;
+
+  /* Body & section */
+  --bg-main: #fff;
+  --text-main: #23272a;
+  --text-sub: #3b5569;
+  --section-bg: #f7fbff;
+
+  /* Section-specific */
+  --why-bg: #0971c8;
+  --features-bg: #e6f2ff;
+  --card-bg: #fff;
+  --card-shadow: #187ad618;
+  --icon-main: #21a8f7;
+  --icon-accent: #ff4c6c;
+}
+
+/* ========== DARK MODE ========= */
+body.dark-mode {   
+  --navbar-bg: #23272a;
+  --navbar-border: #424549;
+  --navbar-link: #f3f3f3;
+  --navbar-link-active: #70b8ff;
+  --navbar-hover-bg: #36393f;
+  --toggle-bg: #36393f;
+
+  --bg-main: #181c23;
+  --text-main: #f1f5fa;
+  --text-sub: #b8c8dc;
+  --section-bg: #1a212b;
+
+  --why-bg: #072755;
+  --features-bg: #1e2a3e;
+  --ai-bg: #232e2b;        
+  --ai-bullet: #65c9ae;  
+  --card-bg: #232e43;
+  --card-shadow: #0141a41a;
+  --icon-main: #70b8ff;
+  --icon-accent: #ff70a6;
+}
+
+/* ==================== RESET VÀ TIỆN ÍCH ==================== */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* ==================== MOBILE & RESPONSIVE ==================== */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 14px;
+    height: 56px;
+  }
+  .navbar__logo span {
+    font-size: 1.2rem;
+  }
+  .navbar__menu a {
+    font-size: 1rem;
+    padding: 6px 10px;
+  }
+  .navbar__toggle {
+    width: 32px;
+    height: 24px;
+    font-size: 1rem;
+    margin-left: 12px;
+  }
+}
+
+/* ==================== SCROLLBAR TÙY CHỌN (TUỲ Ý) ==================== */
+::-webkit-scrollbar {
+  width: 7px;
+  background: var(--section-bg, #f7fbff);
+}
+::-webkit-scrollbar-thumb {
+  background: #c9defc66;
+  border-radius: 5px;
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #193555;
+}

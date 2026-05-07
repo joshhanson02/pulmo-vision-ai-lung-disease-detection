@@ -1,0 +1,64 @@
+<div class="ai-fab-wrapper" [class.ai-fab--expanded]="showChat">
+  <!-- Floating Button: chỉ hiện khi chatbox chưa mở -->
+  <button
+    class="ai-fab"
+    *ngIf="!showChat"
+    (click)="toggleChat()"
+    aria-label="Open Pulmo AI Assistant"
+    tabindex="0"
+  >
+    <img src="/icon/robot-icon.svg" alt="AI Bot" class="ai-fab__icon" />
+  </button>
+
+  <!-- Chatbox: hiện khi showChat = true -->
+  <div
+    class="ai-chatbox"
+    *ngIf="showChat"
+    [@chatboxAnim]
+    [ngStyle]="{
+      top: dragPosition.top !== null ? dragPosition.top + 'px' : null,
+      left: dragPosition.left !== null ? dragPosition.left + 'px' : null,
+      right: dragPosition.left !== null ? 'auto' : '2vw',
+      bottom: dragPosition.top !== null ? 'auto' : '100px'
+    }"
+  >
+    <div
+      class="ai-chatbox__header"
+      (mousedown)="onMouseDownHeader($event)"
+      style="cursor: move"
+    >
+      <span>Pulmo AI</span>
+      <button
+        class="ai-chatbox__close"
+        (click)="toggleChat()"
+        aria-label="Close chat"
+        tabindex="0"
+      >
+        ✕
+      </button>
+    </div>
+    <div class="ai-chatbox__messages" #messagesContainer>
+      <div *ngFor="let msg of messages">
+        <div class="bubble" [ngClass]="msg.from">{{ msg.text }}</div>
+      </div>
+      <div class="bubble bot" *ngIf="loading">
+        <span class="typing-dot"></span>
+        <span>Pulmo đang trả lời</span>
+      </div>
+    </div>
+    <form class="ai-chatbox__input" (ngSubmit)="sendMessage()">
+      <input
+        #chatInput
+        type="text"
+        [(ngModel)]="input"
+        [disabled]="loading"
+        placeholder="Ask something ..."
+        name="chat"
+        required
+        autocomplete="off"
+        aria-label="Message AI"
+      />
+      <button type="submit" [disabled]="!input || loading">Send</button>
+    </form>
+  </div>
+</div>

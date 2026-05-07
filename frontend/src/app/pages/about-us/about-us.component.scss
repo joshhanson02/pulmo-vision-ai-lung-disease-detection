@@ -1,0 +1,394 @@
+.aboutus-root {
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--section-bg, #f7fbff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Inter', 'Montserrat', Arial, sans-serif;
+  overflow-x: hidden;
+  margin-top: 5vw;
+}
+
+/* === 1. Header ABOUT US với hiệu ứng reflection === */
+.aboutus-header {
+  width: 100vw;
+  height: 40vw;
+  min-height: 40vw;
+  display: flex;
+  align-items: anchor-center;
+  justify-content: center;
+  background: var(--bg-main);
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 2vw 2vw;
+
+  .aboutus-header-text {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 2vw;
+
+    .aboutus-title {
+      font-size: clamp(2.7rem, 7vw, 5.1rem);
+      font-weight: 900;
+      letter-spacing: 0.035em;
+      line-height: 1;
+      margin: 0;
+      color: var(--text-main);
+      text-shadow: 0 2px 8px #3332, 0 1px 0 #fff7;
+      transition: color 0.25s;
+    }
+    .aboutus-title-reflection {
+      margin: 0;
+      transform: scaleY(-1);
+      opacity: 0.38;
+      filter: blur(0.5px);
+      pointer-events: none;
+      user-select: none;
+      color: var(--text-main);
+      mask-image: linear-gradient(to bottom, rgb(0, 0, 0), transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0), transparent 100%);
+      transition: color 0.25s;
+    }
+  }
+}
+
+/* === 2. Giới thiệu: căn giữa logo Pulmo Vision === */
+.aboutus-intro {
+  width: 100vw;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-main);
+  padding: 4vw 2vw 4vw 2vw;
+  gap: 4vw;
+  margin-bottom: 2vw;
+
+  .aboutus-intro-left {
+    flex: 0 0 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .aboutus-logo-gradient {
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      font-weight: 900;
+      line-height: 0.96;
+      background: linear-gradient(135deg, #14de9b 5%, #18b1fa 48%, #187ad6 98%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.025em;
+      margin: 0 auto;
+      user-select: none;
+      text-align: center;
+    }
+  }
+  .aboutus-intro-right {
+    flex: 1 1 520px;
+    max-width: 880px;
+    display: flex;
+    align-items: center;
+    p {
+      font-size: clamp(1.01rem, 1.08vw, 1.16rem);
+      font-weight: 500;
+      color: var(--text-main);
+      line-height: 1.64;
+      margin: 0;
+      letter-spacing: 0.008em;
+      text-align: left;
+    }
+  }
+}
+
+/* === 3. WHY PULMO VISION MATTERS === */
+.aboutus-why {
+  width: 100vw;
+  background: linear-gradient(90deg, #e9f8ed 40%, #eaf2fe 100%);
+  padding: 4vw 2vw 5vw 2vw;
+  margin-bottom: 2vw;
+
+  h2 {
+    text-align: center;
+    font-size: clamp(1.65rem, 3.2vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin-bottom: 2.5vw;
+    color: #181a1f;
+  }
+  .aboutus-why-row {
+    display: flex;
+    flex-direction: row;
+    gap: 3.5vw;
+    justify-content: center;
+    align-items: flex-start;
+    width: 96vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .aboutus-why-col {
+    background: var(--card-bg);
+    border-radius: 1.4rem;
+    box-shadow: 0 4px 16px var(--card-shadow);
+    padding: 2.2rem 2rem;
+    flex: 1 1 360px;
+    max-width: 540px;
+    min-width: 260px;
+
+    h3 {
+      color: var(--icon-main);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 900;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+    ul {
+      padding-left: 1.3em;
+      margin: 0;
+      li {
+        font-size: clamp(1.01rem, 1vw, 1.13rem);
+        color: var(--text-sub);
+        font-weight: 500;
+        line-height: 1.5;
+        margin-bottom: 0.7em;
+      }
+    }
+  }
+}
+
+/* DARK MODE CHO VÙNG WHY MATTERS */
+body.dark-mode .aboutus-why {
+  background: linear-gradient(90deg, #192438 60%, #141c2a 100%);
+  h2 {
+    color: #f3f3f3;
+  }
+  .aboutus-why-col {
+    background: #232e43;
+    h3 {
+      color: #70b8ff;
+    }
+    ul li {
+      color: #b8c8dc;
+    }
+  }
+}
+
+/* === 4. Technologies: căn giữa chữ & tăng font === */
+.aboutus-technologies-card {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0 0 3vw 0;
+  background: transparent;
+
+  .aboutus-technologies-inner {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 320px;
+    background: var(--card-bg, #fff);
+    border-radius: 1.6rem;
+    box-shadow: 0 4px 28px #187ad62b;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.8vw 3vw;
+    gap: 3vw;
+    margin: 0 auto;
+  }
+
+  .aboutus-tech-title {
+    flex: 0 0 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    span {
+      font-size: clamp(2.6rem, 5vw, 4.1rem);
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      background: linear-gradient(120deg, #14de9b 12%, #18b1fa 48%, #187ad6 98%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: left;
+      display: block;
+    }
+  }
+
+  .aboutus-tech-list {
+    flex: 1 1 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vw;
+    font-size: clamp(1.19rem, 1.32vw, 1.27rem);
+    font-weight: 600;
+    color: var(--text-sub, #23272a);
+    justify-content: center;
+    align-items: flex-start;
+
+    > div {
+      margin-bottom: 0.4vw;
+      b {
+        color: var(--icon-main, #21a8f7);
+        font-weight: 700;
+      }
+      span {
+        margin-right: 0.55em;
+      }
+    }
+  }
+}
+
+/* DARK MODE Technologies Card */
+body.dark-mode .aboutus-technologies-card .aboutus-technologies-inner {
+  background: #232e43;
+}
+body.dark-mode .aboutus-technologies-card .aboutus-tech-list {
+  color: #b8c8dc;
+  b { color: #70b8ff; }
+}
+
+
+/* === 5. FAQ giữ nguyên === */
+.aboutus-faq {
+  width: 100vw;
+  background: var(--section-bg);
+  padding: 4vw 0 6vw 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: clamp(1.35rem, 2.8vw, 2.2rem);
+    color: var(--icon-main);
+    font-weight: 800;
+    margin-bottom: 2.5vw;
+    letter-spacing: 0.035em;
+    text-align: center;
+  }
+  .aboutus-faq-list {
+    width: 94vw;
+    max-width: 780px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2vw;
+  }
+  .aboutus-faq-item {
+    background: var(--card-bg);
+    border-radius: 1.15rem;
+    box-shadow: 0 2px 8px #187ad62b;
+    padding: 1.5rem 1.8rem;
+    transition: box-shadow 0.18s;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 8px 32px #21a8f71a;
+    }
+    .aboutus-faq-q {
+      font-weight: 700;
+      font-size: clamp(1.07rem, 1.13vw, 1.18rem);
+      color: var(--icon-main);
+      margin-bottom: 0.44em;
+    }
+    .aboutus-faq-a {
+      font-size: clamp(0.99rem, 1vw, 1.09rem);
+      color: var(--text-sub);
+      font-weight: 500;
+      line-height: 1.5;
+      padding-left: 0.1em;
+    }
+  }
+}
+body.dark-mode .aboutus-faq .aboutus-faq-a {
+  color: #b8c8dc;
+}
+
+/* ==== Responsive Mobile ==== */
+@media (max-width: 900px) {
+  .aboutus-header {
+    min-height: 19vw;
+    margin-top: 5vw;
+    .aboutus-header-text {
+      .aboutus-title, .aboutus-title-reflection {
+        font-size: 2rem !important;
+      }
+    }
+  }
+  .aboutus-intro {
+    flex-direction: column;
+    gap: 2vw;
+    padding: 6vw 2vw 4vw 2vw;
+    .aboutus-intro-left {
+      justify-content: center;
+      .aboutus-logo-gradient {
+        font-size: 2.1rem;
+        margin-left: 0;
+        margin-top: 0.7vw;
+      }
+    }
+    .aboutus-intro-right {
+      max-width: 98vw;
+      p {
+        font-size: 0.97rem;
+      }
+    }
+  }
+  .aboutus-why {
+    padding: 6vw 2vw 6vw 2vw;
+    .aboutus-why-row {
+      flex-direction: column;
+      gap: 4vw;
+      width: 99vw;
+      max-width: 100vw;
+    }
+    .aboutus-why-col {
+      padding: 2rem 1rem;
+      max-width: 98vw;
+      min-width: unset;
+    }
+    h2 {
+      font-size: 1.27rem;
+    }
+  }
+    .aboutus-technologies-card .aboutus-technologies-inner {
+    flex-direction: column;
+    align-items: center;
+    padding: 6vw 2vw;
+    gap: 2vw;
+    min-height: unset;
+  }
+    .aboutus-technologies-card .aboutus-tech-title {
+    justify-content: center;
+    margin-bottom: 1vw;
+    span {
+      font-size: 2.1rem;
+      text-align: center;
+    }
+  }
+    .aboutus-technologies-card .aboutus-tech-list {
+    align-items: start;
+    font-size: 1.07rem;
+    gap: 1vw;
+  }
+  .aboutus-faq {
+    padding: 8vw 0 8vw 0;
+    .aboutus-faq-list {
+      width: 98vw;
+      gap: 3vw;
+    }
+    .aboutus-faq-item {
+      padding: 1.2rem 1vw;
+    }
+    h2 {
+      font-size: 1.17rem;
+    }
+  }
+}

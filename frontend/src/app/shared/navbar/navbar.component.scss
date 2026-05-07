@@ -1,0 +1,196 @@
+// ==================== NAVBAR ====================
+.navbar {
+  width: 100%;
+  height: 4.25rem;
+  background: var(--navbar-bg, #fff);
+  border-bottom: 2px solid var(--navbar-border, #e8eaf0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  font-family: 'Inter', Arial, sans-serif;
+  transition: background 0.24s, border-color 0.23s;
+  box-sizing: border-box;
+}
+
+.navbar__logo {
+  flex: 0 0 auto;
+  user-select: none;
+  text-decoration: none;
+  outline: none;
+  transition: filter 0.18s;
+  &:hover, &:focus {
+    filter: brightness(1.2) drop-shadow(0 1px 6px #2090ff30);
+    cursor: pointer;
+  }
+  span {
+    color: #2186EB;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.0625rem;
+  }
+  b {
+    color: #0084FF;
+    font-weight: 900;
+  }
+}
+
+// Hamburger menu (ẩn trên desktop)
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: none;
+  border: none;
+  margin-right: 2vw;
+  cursor: pointer;
+  z-index: 102;
+  padding: 0;
+  outline: none;
+
+  span {
+    display: block;
+    width: 1.7rem;
+    height: 0.19rem;
+    background: #2186eb;
+    border-radius: 3px;
+    margin: 0.27rem 0;
+    transition:
+      transform 0.28s cubic-bezier(.86,0,.07,1),
+      background 0.16s,
+      opacity 0.2s;
+    position: relative;
+  }
+
+  &:hover span,
+  &:focus span {
+    background: #1671c8;
+  }
+
+  // Hamburger chuyển thành X
+  &.active span:nth-child(1) {
+    transform: translateY(0.46rem) rotate(45deg);
+  }
+  &.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0.8);
+  }
+  &.active span:nth-child(3) {
+    transform: translateY(-0.46rem) rotate(-45deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar__hamburger { display: flex; margin-right: 1.1rem; }
+}
+
+// Menu chính
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-right: 6vw;
+  transition: none;
+
+  a {
+    text-decoration: none;
+    color: var(--navbar-link, #323a46);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.75rem;
+    transition: background 0.18s, color 0.2s;
+    background: transparent;
+    cursor: pointer;
+    &.active,
+    &:hover {
+      background: var(--navbar-hover-bg, #eaf2ff);
+      color: var(--navbar-link-active, #2186EB);
+    }
+  }
+}
+
+// Toggle dark mode
+.navbar__toggle {
+  border: none;
+  background: var(--toggle-bg, #f7f9fd);
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1.1rem;
+  box-shadow: 0 2px 8px #0001;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s, border 0.2s;
+  &:hover, &:focus {
+    background: var(--navbar-hover-bg, #eaf2ff);
+    color: var(--navbar-link-active, #2186EB);
+    border: 1.5px solid var(--navbar-link-active, #2186EB);
+    outline: none;
+  }
+}
+
+// ==================== RESPONSIVE MOBILE ====================
+@media (max-width: 900px) {
+  .navbar {
+    height: 3.5rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar__logo {
+    padding-left: 1rem;
+    span { font-size: 1.2rem; }
+  }
+  .navbar__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--navbar-bg, #fff);
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0.5rem 0 1rem 0;
+    gap: 0;
+    border-radius: 0 0 1.2rem 1.2rem;
+    box-shadow: 0 8px 32px #2090ff13;
+    z-index: 101;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transition: max-height 0.37s cubic-bezier(.8,.2,.1,1), opacity 0.21s;
+
+    a, .navbar__toggle {
+      width: 100%;
+      text-align: left;
+      padding: 1.12rem 2.2rem;
+      font-size: 1.13rem;
+      background: none;
+      margin: 0;
+      border-radius: 0;
+      cursor: pointer;
+      &.active,
+      &:hover {
+        background: var(--navbar-hover-bg, #eaf2ff);
+        color: var(--navbar-link-active, #2186EB);
+      }
+    }
+  }
+  .navbar__menu.active {
+    max-height: 18rem;
+    opacity: 1;
+    pointer-events: all;
+    transition: max-height 0.42s cubic-bezier(.8,.2,.1,1), opacity 0.25s;
+  }
+}

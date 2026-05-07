@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <a class="navbar__logo" routerLink="/" tabindex="0" aria-label="Go to Home">
+    <span><b>PULMO VISION</b></span>
+  </a>
+
+  <!-- Hamburger cho mobile -->
+  <button
+    class="navbar__hamburger"
+    [class.active]="menuOpen"
+    (click)="menuOpen = !menuOpen"
+    aria-label="Open menu"
+    type="button"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="navbar__menu" [class.active]="menuOpen">
+    <a
+      routerLink="/scan-xray"
+      routerLinkActive="active"
+      (click)="menuOpen = false"
+      >Scan X-ray</a
+    >
+    <a
+      routerLink="/about-us"
+      routerLinkActive="active"
+      (click)="menuOpen = false"
+      >About Us</a
+    >
+    <a
+      routerLink="/lung-diseases"
+      routerLinkActive="active"
+      (click)="menuOpen = false"
+      >Lung Diseases</a
+    >
+    <button
+      class="navbar__toggle"
+      (click)="toggleTheme()"
+      aria-label="Toggle dark mode"
+      type="button"
+    >
+      <span *ngIf="!isDarkMode">🌞</span>
+      <span *ngIf="isDarkMode">🌙</span>
+    </button>
+  </div>
+</nav>

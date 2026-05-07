@@ -1,0 +1,45 @@
+# Python bytecode & cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.cache/
+
+# Git
+.git
+.gitignore
+
+# Virtual env & env files
+.env
+.venv/
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# AI / Machine Learning (rất quan trọng)
+*.pt
+*.pth
+*.h5
+*.ckpt
+dataset/
+datasets/
+models/
+runs/
+
+# IDEs & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build files
+dist/
+build/
+*.egg-info/

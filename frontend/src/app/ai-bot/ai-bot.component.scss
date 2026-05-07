@@ -1,0 +1,269 @@
+// ========== AI BOT ==========
+
+.ai-fab-wrapper {
+  position: fixed;
+  right: 2vw;
+  bottom: 2.6vw;
+  z-index: 2010;
+}
+
+// Nút nổi
+.ai-fab {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--icon-main, #21a8f7);
+  box-shadow: 0 4px 24px #1b90ff33, 0 1.5vw 2vw #50e2ff26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.22s, box-shadow 0.22s, transform 0.16s;
+
+  .ai-fab__icon {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 2px 8px #fff7);
+    transition: filter 0.13s, transform 0.2s;
+  }
+  &:hover, &:focus {
+    background: var(--navbar-link-active, #2186EB);
+    transform: scale(1.09) rotate(-8deg);
+    box-shadow: 0 8px 32px #21a8f7af;
+  }
+}
+
+// Chatbox
+.ai-chatbox {
+  position: fixed;
+  right: 2vw;
+  bottom: 100px;
+  width: 385px;
+  max-width: 97vw;
+  height: 490px;
+  background: var(--card-bg, #fff);
+  color: var(--text-main, #1a212b);
+  border-radius: 1.6rem;
+  box-shadow: 0 14px 90px #2384e0e0, 0 1.5vw 2.4vw #31e2ff17;
+  z-index: 2012;
+  display: flex;
+  flex-direction: column;
+  animation: aiChatFadeIn 0.23s cubic-bezier(.7, .2, .2, 1);
+  overflow: hidden;
+
+  @media (max-width: 600px) {
+    width: 100vw !important; right: 0; left: 0;
+    bottom: 0;
+    border-radius: 1.3rem 1.3rem 0 0;
+    max-width: 100vw;
+    height: 90vh;
+  }
+}
+
+@keyframes aiChatFadeIn {
+  0% { opacity: 0; transform: translateY(34px);}
+  100% { opacity: 1; transform: none;}
+}
+
+.ai-chatbox__header {
+  background: var(--icon-main, #21a8f7);
+  color: #fff;
+  padding: 1.14rem 1.65rem 1.06rem 1.55rem;
+  font-size: 1.18rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.2px solid #d6edfa36;
+}
+
+.ai-chatbox__close {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.83;
+  transition: opacity 0.16s, transform 0.19s;
+  &:hover { opacity: 1; transform: scale(1.15) rotate(10deg);}
+}
+
+// ========== MESSAGES ==========
+.ai-chatbox__messages {
+  flex: 1 1 0;
+  padding: 1.27rem 1.4rem 0.9rem 1.4rem;
+  background: transparent;
+  max-height: calc(100% - 154px);
+  min-height: 120px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.82em;
+  scroll-behavior: smooth;
+
+  // Wrapper để control bubble alignment user/bot
+  > div {
+    display: flex;
+    width: 100%;
+    // User bubble phải nằm sát phải
+    .bubble.user {
+      margin-left: auto;
+      margin-right: 0;
+      align-self: flex-end;
+    }
+    // Bot bubble sát trái
+    .bubble.bot {
+      margin-right: auto;
+      margin-left: 0;
+      align-self: flex-start;
+    }
+  }
+}
+
+.typing-dot {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.6em;
+  vertical-align: middle;
+  position: relative;
+
+  &::before, &::after, span {
+    content: '';
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    background: #2186EB;
+    border-radius: 50%;
+    position: absolute;
+    animation: pulmo-dot 1.2s infinite;
+  }
+  &::before {
+    left: 0; animation-delay: 0s;
+  }
+  span {
+    left: 0.4em; animation-delay: 0.18s;
+  }
+  &::after {
+    left: 0.8em; animation-delay: 0.36s;
+  }
+}
+
+@keyframes pulmo-dot {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8);}
+  40% { opacity: 1; transform: scale(1.15);}
+}
+
+.bubble {
+  padding: 0.86em 1.32em;
+  border-radius: 1.45em;
+  font-size: 1.10rem;
+  line-height: 1.6;
+  max-width: 80%;
+  min-width: 62px;
+  word-break: break-word;
+  white-space: pre-line;
+  box-shadow: 0 2px 10px #2186eb11;
+  margin-bottom: 0.15em;
+  display: inline-block;
+  text-align: left;
+}
+
+.bot {
+  background: var(--navbar-hover-bg, #eaf2ff);
+  color: var(--text-main, #252525);
+  border-radius: 1.6em 1.6em 1.6em 0.7em;
+}
+
+.user {
+  background: var(--navbar-link-active, #2186EB);
+  color: #fff;
+  border-radius: 1.5em 1.5em 0.8em 1.5em;
+  box-shadow: 0 2px 10px #2186eb21;
+  max-width: 80%;
+  min-width: 62px;
+}
+
+// ========== INPUT ==========
+.ai-chatbox__input {
+  display: flex;
+  gap: 0.7em;
+  padding: 1.06rem 1.37rem 1.12rem 1.37rem;
+  background: var(--section-bg, #f7fbff);
+  border-top: 1.1px solid #e6f2ff;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+
+  input {
+    flex: 1 1 0;
+    border-radius: 1.3em;
+    border: 1.2px solid #bfe2fa;
+    font-size: 1.09rem;
+    padding: 0.76em 1.14em;
+    background: var(--bg-main);
+    color: var(--text-main);
+    outline: none;
+    transition: border 0.15s;
+    box-sizing: border-box;
+    &:focus { border: 1.2px solid var(--navbar-link-active, #2186EB);}
+  }
+  button {
+    background: var(--navbar-link-active, #2186EB);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 1.3em;
+    padding: 0.67em 1.44em;
+    font-size: 1.09rem;
+    cursor: pointer;
+    transition: background 0.16s;
+    align-self: center;
+    &:hover:not(:disabled) { background: #125aaf; }
+    &:disabled { opacity: 0.55; cursor: not-allowed;}
+  }
+}
+
+// ========== DARK MODE ==========
+body.dark-mode {
+  .ai-fab { background: var(--icon-main, #70b8ff);}
+  .ai-chatbox {
+    background: var(--card-bg, #232e43);
+    color: var(--text-main, #f1f5fa);
+    .bot {
+      background: #232e43;
+      color: #eaf6ff;
+      border: 1.3px solid #6dbfff40;
+      box-shadow: 0 2px 8px #40b0ff22;
+    }
+    .user {
+      background: linear-gradient(135deg, #70b8ff 65%, #009fff 100%);
+      color: #181c23;
+      border: 1.2px solid #3daeffa8;
+      box-shadow: 0 2px 12px #009fff42;
+    }
+  }
+  .ai-chatbox__input {
+    background: var(--section-bg, #1a212b);
+    input { background: var(--bg-main, #181c23); color: var(--text-main, #f1f5fa);}
+    button { background: var(--icon-main, #70b8ff); color: #181c23;}
+  }
+  .ai-chatbox__header {
+    background: var(--icon-main, #70b8ff); color: #181c23;
+  }
+}
+
+// ========== RESPONSIVE ==========
+@media (max-width: 600px) {
+  .ai-chatbox {
+    width: 100vw !important; right: 0; left: 0;
+    bottom: 0;
+    border-radius: 1.3rem 1.3rem 0 0;
+    max-width: 100vw;
+    height: 94vw;
+  }
+  .ai-chatbox__input { padding: 3vw 2vw; }
+  .ai-chatbox__messages { padding: 3vw 2vw 2vw 2vw; }
+}

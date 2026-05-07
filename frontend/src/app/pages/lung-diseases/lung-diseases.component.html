@@ -1,0 +1,130 @@
+<div class="accordion-section">
+  <!-- Normal Lung -->
+  <div class="accordion-card" [class.open]="openIndex === 0">
+    <div class="accordion-header" (click)="toggleAccordion(0)">
+      <span>
+        <img
+          src="/icon/ok-circle.svg"
+          alt="Normal Lung"
+          style="width: 28px; vertical-align: middle; margin-right: 12px"
+        />
+        Normal Lung
+      </span>
+      <span class="accordion-icon">&#9660;</span>
+    </div>
+    <div class="accordion-content">
+      <div>
+        <img
+          src="/images/lung-normal-1.png"
+          alt="Normal X-ray"
+          style="
+            width: 100%;
+            max-width: 320px;
+            display: block;
+            margin: 14px auto;
+          "
+        />
+        <p style="margin-top: 12px">
+          Healthy lungs with no visible abnormalities. X-ray appears clear
+          without unusual spots or opacities.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bacterial Pneumonia -->
+  <div class="accordion-card" [class.open]="openIndex === 1">
+    <div class="accordion-header" (click)="toggleAccordion(1)">
+      <span>
+        <img
+          src="/icon/bacterias-view.svg"
+          alt="Bacterial Pneumonia"
+          style="width: 28px; vertical-align: middle; margin-right: 12px"
+        />
+        Bacterial Pneumonia
+      </span>
+      <span class="accordion-icon">&#9660;</span>
+    </div>
+    <div class="accordion-content">
+      <div>
+        <img
+          src="/images/lung-bacterial-1.png"
+          alt="Bacterial Pneumonia X-ray"
+          style="
+            width: 100%;
+            max-width: 320px;
+            display: block;
+            margin: 14px auto;
+          "
+        />
+        <ul>
+          <li>
+            <b>Causes:</b> Most commonly by Streptococcus pneumoniae and other
+            bacteria.
+          </li>
+          <li>
+            <b>Symptoms:</b> Cough, fever, chest pain, shortness of breath.
+          </li>
+          <li>
+            <b>Complications:</b> Pleural effusion, sepsis, respiratory failure.
+          </li>
+          <li>
+            <b>Prevention:</b> Vaccination, good hygiene, avoiding smoking.
+          </li>
+          <li>
+            <b>Treatment:</b> Usually antibiotics, supportive care (oxygen,
+            fluids).
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Viral Pneumonia -->
+  <div class="accordion-card" [class.open]="openIndex === 2">
+    <div class="accordion-header" (click)="toggleAccordion(2)">
+      <span>
+        <img
+          src="/icon/virus-solid.svg"
+          alt="Viral Pneumonia"
+          style="width: 28px; vertical-align: middle; margin-right: 12px"
+        />
+        Viral Pneumonia
+      </span>
+      <span class="accordion-icon">&#9660;</span>
+    </div>
+    <div class="accordion-content">
+      <div>
+        <img
+          src="/images/lung-viral-1.png"
+          alt="Viral Pneumonia X-ray"
+          style="
+            width: 100%;
+            max-width: 320px;
+            display: block;
+            margin: 14px auto;
+          "
+        />
+        <ul>
+          <li>
+            <b>Causes:</b> Influenza, RSV, SARS-CoV-2 (COVID-19), and other
+            viruses.
+          </li>
+          <li><b>Symptoms:</b> Cough, fever, fatigue, shortness of breath.</li>
+          <li>
+            <b>Complications:</b> May lead to secondary bacterial infection,
+            ARDS.
+          </li>
+          <li>
+            <b>Prevention:</b> Flu vaccination, masks, avoid contact with
+            infected people.
+          </li>
+          <li>
+            <b>Treatment:</b> Antiviral meds (sometimes), mainly supportive
+            care.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
